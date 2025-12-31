@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE ADAMU ARCHIVE // D.J. ALEXANDER</title>
+    <style>
+        :root {
+            --gold: #c5a059;
+            --black: #050505;
+            --text: #d4d4d4;
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--black);
+            color: var(--text);
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('cover-art.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        /* CRT Overlay */
+        body::before {
+            content: " ";
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.05), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.05));
+            background-size: 100% 4px, 3px 100%;
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        .container {
+            position: relative;
+            width: 90%;
+            max-width: 650px;
+            padding: 40px;
+            background: rgba(10, 10, 10, 0.95);
+            border: 1px solid var(--gold);
+            box-shadow: 0 0 40px rgba(197, 160, 89, 0.1);
+            z-index: 20;
+        }
+
+        h1 {
+            color: var(--gold);
+            font-size: 1.5rem;
+            letter-spacing: 5px;
+            margin: 0 0 20px 0;
+            text-transform: uppercase;
+        }
+
+        /* --- TYPEWRITER ENGINE --- */
+        .type-line {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid var(--gold);
+            width: 0;
+            margin: 5px 0;
+            opacity: 0;
+        }
+
+        @keyframes typing {
+            from { width: 0; opacity: 1; }
+            to { width: 100%; opacity: 1; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        /* Sequential Delays */
+        .line-1 { animation: typing 1.5s steps(30) 0.5s forwards, blink 0.7s infinite; }
+        .line-2 { animation: typing 1.5s steps(30) 2.2s forwards, blink 0.7s infinite; }
+        .line-3 { animation: typing 2.0s steps(40) 3.9s forwards, blink 0.7s infinite; }
+
+        /* --- DNA HELIX --- */
+        .dna-container {
+            position: absolute;
+            right: 30px;
+            top: 50px;
+            width: 40px;
+            height: 120px;
+            perspective: 1000px;
+        }
+
+        .dna {
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            animation: rotateDNA 8s linear infinite;
+        }
+
+        .rung {
+            position: absolute;
+            width: 30px;
+            height: 2px;
+            background: rgba(197, 160, 89, 0.3);
+            left: 5px;
+        }
+
+        .rung::before, .rung::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 50%;
+            top: -1px;
+            box-shadow: 0 0 8px var(--gold);
+        }
+        .rung::before { left: 0; }
+        .rung::after { right: 0; }
+
+        @keyframes rotateDNA {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
+
+        /* Helper for rung placement */
+        .rung:nth-child(1) { top: 0px; transform: rotateY(0deg); }
+        .rung:nth-child(2) { top: 15px; transform: rotateY(30deg); }
+        .rung:nth-child(3) { top: 30px; transform: rotateY(60deg); }
+        .rung:nth-child(4) { top: 45px; transform: rotateY(90deg); }
+        .rung:nth-child(5) { top: 60px; transform: rotateY(120deg); }
+        .rung:nth-child(6) { top: 75px; transform: rotateY(150deg); }
+        .rung:nth-child(7) { top: 90px; transform: rotateY(180deg); }
+
+        .form-fade {
+            opacity: 0;
+            animation: fadeIn 1s ease 6s forwards;
+            margin-top: 30px;
+        }
+
+        @keyframes fadeIn { to { opacity: 1; } }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="dna-container">
+            <div class="dna">
+                <div class="rung"></div><div class="rung"></div><div class="rung"></div>
+                <div class="rung"></div><div class="rung"></div><div class="rung"></div>
+                <div class="rung"></div>
+            </div>
+        </div>
+
+        <h1>System Briefing</h1>
+        
+        <div class="type-line line-1">> CONNECTION ESTABLISHED: SECTOR 7</div>
+        <div class="type-line line-2">> SCANNING 2q13 FUSION SITE...</div>
+        <div class="type-line line-3">> ALERT: ADAMU PROTOCOL DETECTED.</div>
+
+        <div class="form-fade">
+            <p style="font-size: 0.8rem; border-left: 2px solid var(--gold); padding-left: 15px; margin-bottom: 25px;">
+                Enter your credentials below to download the declassified briefing <strong>"The Adamu Protocol"</strong> and join the Archive.
+            </p>
+            
+            <iframe src="https://djalexander.substack.com/embed" width="100%" height="150" style="background:transparent !important;" frameborder="0" scrolling="no"></iframe>
+        </div>
+    </div>
+
+</body>
+</html>
