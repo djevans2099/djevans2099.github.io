@@ -21,10 +21,10 @@ body {
     height: 100vh;
     overflow: hidden;
 
-    /* REVISED GRADIENT: 0.3 opacity is much clearer */
-    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), 
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
                 url('cover-art.jpg') no-repeat center center;
-    background-size: cover;
+    background-size: 80%; /* Try 80% or 90% to pull the "camera" back */
+    background-color: var(--black); /* Fills the gaps if the image is smaller */
 }
 
 /* REVISED CRT OVERLAY: Lowered opacity so it doesn't "muddy" your art */
