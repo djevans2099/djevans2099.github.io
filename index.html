@@ -18,13 +18,21 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    overflow: hidden;
+    min-height: 100vh; /* Changed from height to min-height */
+    min-height: -webkit-fill-available; /* Fix for mobile address bars */
+    overflow-x: hidden;
 
+    /* REVISED BACKGROUND FOR MOBILE COMPATIBILITY */
     background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
                 url('cover-art.jpg') no-repeat center center;
-    background-size: 80%; /* Try 80% or 90% to pull the "camera" back */
-    background-color: var(--black); /* Fills the gaps if the image is smaller */
+    background-size: cover;
+    background-attachment: scroll; /* Changing 'fixed' to 'scroll' fixes Android Chrome */
+}
+
+/* Ensure the background stays put even on mobile */
+html {
+    height: -webkit-fill-available;
+    background-color: var(--black);
 }
 
 /* REVISED CRT OVERLAY: Lowered opacity so it doesn't "muddy" your art */
@@ -208,6 +216,7 @@ body::before {
     </div>
 </body>
 </html>
+
 
 
 
